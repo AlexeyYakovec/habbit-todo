@@ -1,7 +1,13 @@
 @import url(../vendor/normalize.css);
+@import url(../vendor/button.css);
+@import url(../vendor/global.css);
+
+@import url(../vendor/panel.css);
+@import url(../vendor/content.css);
 
 :root {
-  --accent-color: #cad5ff;
+  /* --accent-color: #cad5ff; */
+  --accent-color: #f3f6fd;
   --menu-color: #fbfaff;
   --title-color: #000000;
   --task-color: #23235f;
@@ -12,15 +18,13 @@
   --btn-color: #5051f9;
   --btn-background-active: #5051f9;
   --btn-background-default: #ffffff;
+  --btn-background-hover: #6a6afb;
 
   --progress-bar: #5051f9;
 
   --gray: #94a3bd;
 }
 
-.page {
-  background-color: var(--accent-color);
-  font-family: "Comfortaa", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
+.app {
+  display: flex;
 }

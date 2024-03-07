@@ -1,0 +1,39 @@
+.button {
+  box-shadow: 0 8px 14px 0 rgba(62, 107, 224, 0.12);
+  background: var(--btn-background-default);
+  border-radius: 14px;
+  inline-size: 45px;
+  block-size: 45px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease-in-out;
+}
+
+.menu__button:hover {
+  background-color: var(--btn-background-hover);
+  color: white;
+}
+
+.menu__button:hover img {
+  filter: brightness(0) invert(1);
+}
+
+.menu__button-active {
+  background-color: var(--btn-background-active);
+}
+
+.menu__button-active img {
+  filter: brightness(0) invert(1);
+}
+
+.plus {
+  border: 1px solid #cad5ff;
+  background-color: transparent;
+}
+
+.plus:hover {
+  border: 1px solid #cad5ff;
+  background-color: rgba(62, 107, 224, 0.6);
+}
