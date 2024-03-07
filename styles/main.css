@@ -1,6 +1,26 @@
-@import url(./vendor/fonts/inter.css);
-@import url(./vendor/normalize.css);
+@import url(../vendor/normalize.css);
+
+:root {
+  --accent-color: #cad5ff;
+  --menu-color: #fbfaff;
+  --title-color: #000000;
+  --task-color: #23235f;
+
+  --progress-color: #232360;
+
+  --btn-background: #edecfe;
+  --btn-color: #5051f9;
+  --btn-background-active: #5051f9;
+  --btn-background-default: #ffffff;
+
+  --progress-bar: #5051f9;
+
+  --gray: #94a3bd;
+}
 
 .page {
-  background-color: #cad5ff;
+  background-color: var(--accent-color);
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
