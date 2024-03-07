@@ -1,0 +1,6 @@
+@import url(./vendor/fonts/inter.css);
+@import url(./vendor/normalize.css);
+
+.page {
+  background-color: #cad5ff;
+}
