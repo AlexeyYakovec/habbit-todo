@@ -11,6 +11,7 @@
   --menu-color: #fbfaff;
   --title-color: #000000;
   --task-color: #23235f;
+  --precent-color: #768396;
 
   --progress-color: #232360;
 
@@ -21,10 +22,18 @@
   --btn-background-hover: #6a6afb;
 
   --progress-bar: #5051f9;
+  --progress-background: #e6e9ed;
 
   --gray: #94a3bd;
 }
 
+.dis-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .app {
   display: flex;
+  gap: 50px;
 }

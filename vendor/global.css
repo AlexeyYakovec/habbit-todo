@@ -23,6 +23,12 @@ ul {
 button {
   border: none;
   outline: none;
+  cursor: pointer;
+}
+
+img,
+svg {
+  cursor: pointer;
 }
 
 body {

@@ -37,3 +37,23 @@
   border: 1px solid #cad5ff;
   background-color: rgba(62, 107, 224, 0.6);
 }
+
+/* Кнопка готово */
+
+.button-ready {
+  inline-size: 120px;
+  block-size: 40px;
+  color: var(--btn-color);
+  background-color: var(--btn-background);
+  border-radius: 8px;
+  border-right: 1px solid #e7ebfb;
+}
+
+/* input */
+
+input {
+  border: 1px solid #e7ebfb;
+  border-radius: 9px;
+  background-color: white;
+  padding: 12px 20px;
+}
