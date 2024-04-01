@@ -166,3 +166,7 @@
   position: absolute;
   inset: 10px 0 0 20px;
 }
+
+input.error {
+  border: 1px solid red;
+}

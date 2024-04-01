@@ -54,14 +54,19 @@
               </div>
 
               <div class="habbit__item-desc">
-                <form class="habbit__form dis-flex">
-                  <input class="input_form" type="text" placeholder="Comment" />
+                <form class="habbit__form dis-flex" onsubmit="addDays(event)">
+                  <input
+                    name="comment"
+                    class="input_form"
+                    type="text"
+                    placeholder="Comment"
+                  />
                   <img
                     class="comment-icon"
                     src="./images/comments.svg"
-                    alt=""
+                    alt="comment"
                   />
-                  <button class="button-ready">Ready</button>
+                  <button class="button-ready" type="submit">Ready</button>
                 </form>
               </div>
             </li>
