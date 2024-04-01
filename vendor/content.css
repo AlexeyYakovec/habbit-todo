@@ -66,6 +66,11 @@
 
 .content__main {
 }
+.days {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 .habbit-list {
   display: flex;
   flex-direction: column;

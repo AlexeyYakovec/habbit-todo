@@ -11,6 +11,10 @@ const page = {
     progressPrecent: document.querySelector(".progress__percent"),
     progressCoverBar: document.querySelector(".progress__cover-bar"),
   },
+  content: {
+    daysContainer: document.getElementById("days"),
+    nextDay: document.querySelector(".habbit__day"),
+  },
 };
 
 // utils
@@ -31,9 +35,6 @@ function saveData() {
 
 // render
 function rerenderMenu(activeHabbit) {
-  if (!activeHabbit) {
-    return;
-  }
   for (const habbit of habbits) {
     const existed = document.querySelector(`[menu-habbit-id="${habbit.id}"]`);
     const button = document.createElement("button");
@@ -65,10 +66,6 @@ function rerenderMenu(activeHabbit) {
 }
 
 function rerenderHead(activeHabbit) {
-  if (!activeHabbit) {
-    return;
-  }
-
   page.header.h1.innerText = activeHabbit.name;
   const progress =
     activeHabbit.days.length / activeHabbit.target > 1
@@ -79,13 +76,55 @@ function rerenderHead(activeHabbit) {
   page.header.progressCoverBar.setAttribute("style", `width: ${progress}%`);
 }
 
+function rerenderContent(activeHabbit) {
+  page.content.daysContainer.innerHTML = "";
+
+  for (const index in activeHabbit.days) {
+    const element = document.createElement("li");
+    element.classList.add("habbit-list__item");
+    element.innerHTML = `
+	                <div class="dis-flex habbit__item-day">
+                <h4 class="habbit__day">Day ${Number(index) + 1}</h4>
+              </div>
+
+              <div class="habbit__item-desc grid">
+                <h4 class="habbit__item-comment">${
+                  activeHabbit.days[index].comment
+                }</h4>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="delete"
+				  alt="удалите день ${index + 1}"
+                >
+                  <path
+                    d="M18 6V18C18 19.1046 17.1046 20 16 20H8C6.89543 20 6 19.1046 6 18V6M15 6V5C15 3.89543 14.1046 3 13 3H11C9.89543 3 9 3.89543 9 5V6M4 6H20M10 10V16M14 10V16"
+                    stroke="#94A3BD"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>`;
+    page.content.daysContainer.appendChild(element);
+  }
+  page.content.nextDay.innerHTML = `Day ${activeHabbit.days.length + 1}`;
+}
+
 // rerender function
 function rerender(activeHabbitId) {
   const activeHabbit = habbits.find((habbit) => {
     return habbit.id === activeHabbitId;
   });
+  if (!activeHabbit) {
+    return;
+  }
   rerenderMenu(activeHabbit);
   rerenderHead(activeHabbit);
+  rerenderContent(activeHabbit);
 }
 
 // init
