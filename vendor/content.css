@@ -57,7 +57,8 @@
 
 .progress__cover-bar {
   position: absolute;
-  width: 80%;
+  transition: all 0.8s;
+  /* width: 80%; */
   background-color: var(--progress-bar);
 }
 

@@ -6,6 +6,11 @@ const HABBIT_KEY = "HABBIT_KEY";
 /* components */
 const page = {
   menu: document.querySelector(".menu__list"),
+  header: {
+    h1: document.querySelector(".title"),
+    progressPrecent: document.querySelector(".progress__percent"),
+    progressCoverBar: document.querySelector(".progress__cover-bar"),
+  },
 };
 
 // utils
@@ -25,40 +30,62 @@ function saveData() {
 }
 
 // render
-
 function rerenderMenu(activeHabbit) {
   if (!activeHabbit) {
     return;
   }
   for (const habbit of habbits) {
     const existed = document.querySelector(`[menu-habbit-id="${habbit.id}"]`);
+    const button = document.createElement("button");
+    const element = document.createElement("li");
+
     if (!existed) {
-      const element = document.createElement("li");
+      button.setAttribute("menu-habbit-id", habbit.id);
+      element.setAttribute("habbit-id", habbit.id);
       element.classList.add("menu__list-item");
-      element.setAttribute("menu-habbit-id", habbit.id);
-      const elementButton = document.createElement("button");
-      elementButton.classList.add("menu__button", "button");
-      elementButton.innerHTML = `<img src="./images/${habbit.icon}.svg" alt="${habbit.name}" />`;
-      element.appendChild(elementButton);
-      if (activeHabbit.id === habbit.ad) {
-        elementButton.classList.add("menu__button-active");
+      button.classList.add("button", "menu__button");
+      button.innerHTML = `<img src="./images/${habbit.icon}.svg" alt=$${habbit.name} />`;
+      button.addEventListener("click", () => {
+        console.log(habbit.id);
+        rerender(habbit.id);
+      });
+      if (activeHabbit.id === habbit.id) {
+        button.classList.add("menu__button-active");
       }
+      element.append(button);
       page.menu.appendChild(element);
       continue;
     }
     if (activeHabbit.id === habbit.id) {
-      existed.classList.add("menu__button-active");
+      existed.classList.toggle("menu__button-active");
     } else {
       existed.classList.remove("menu__button-active");
     }
   }
 }
 
+function rerenderHead(activeHabbit) {
+  if (!activeHabbit) {
+    return;
+  }
+
+  page.header.h1.innerText = activeHabbit.name;
+  const progress =
+    activeHabbit.days.length / activeHabbit.target > 1
+      ? 100
+      : (activeHabbit.days.length / activeHabbit.target) * 100;
+
+  page.header.progressPrecent.innerText = progress.toFixed(0) + "%";
+  page.header.progressCoverBar.setAttribute("style", `width: ${progress}%`);
+}
+
+// rerender function
 function rerender(activeHabbitId) {
   const activeHabbit = habbits.find((habbit) => {
     return habbit.id === activeHabbitId;
   });
   rerenderMenu(activeHabbit);
+  rerenderHead(activeHabbit);
 }
 
 // init
