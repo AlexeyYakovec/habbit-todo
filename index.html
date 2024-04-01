@@ -1,80 +1,85 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Habbit Todo</title>
+      <title>Habbit Todo</title>
 
-    <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
+      <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./vendor/normalize.css" />
-    <link rel="stylesheet" href="./styles/main.css" />
-  </head>
-  <body>
-    <div class="app">
-      <div class="panel">
-        <img class="logo" src="./images/logo.svg" alt="logo hobbit app" />
-        <nav class="menu">
-          <ul class="menu__list">
-            <button class="button plus menu__add">
-              <img src="./images/Add.svg" alt="make a habit" />
-            </button>
-          </ul>
-        </nav>
-      </div>
-      <div class="content">
-        <!-- content header -->
-        <div class="content__header">
-          <h1 class="title"></h1>
-          <div class="progress">
-            <div class="progress__text">
-              <div class="progress__name">Progress</div>
-              <div class="progress__percent">%</div>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap"
+         rel="stylesheet"
+      />
+      <link rel="stylesheet" href="./vendor/normalize.css" />
+      <link rel="stylesheet" href="./styles/main.css" />
+   </head>
+   <body>
+      <div class="app">
+         <div class="panel">
+            <img class="logo" src="./images/logo.svg" alt="logo hobbit app" />
+            <nav class="menu">
+               <ul class="menu__list">
+                  <button class="button plus menu__add">
+                     <img src="./images/Add.svg" alt="make a habit" />
+                  </button>
+               </ul>
+            </nav>
+         </div>
+         <div class="content">
+            <!-- content header -->
+            <div class="content__header">
+               <h1 class="title"></h1>
+               <div class="progress">
+                  <div class="progress__text">
+                     <div class="progress__name">Progress</div>
+                     <div class="progress__percent">%</div>
+                  </div>
+                  <div class="progress-line progress__bar">
+                     <div class="progress-line progress__cover-bar"></div>
+                  </div>
+               </div>
             </div>
-            <div class="progress-line progress__bar">
-              <div class="progress-line progress__cover-bar"></div>
-            </div>
-          </div>
-        </div>
-        <!-- content main -->
-        <main class="content__main">
-          <ul class="habbit-list">
-            <div id="days" class="days"></div>
+            <!-- content main -->
+            <main class="content__main">
+               <ul class="habbit-list">
+                  <div id="days" class="days"></div>
 
-            <li class="habbit-list__item">
-              <div class="dis-flex habbit__item-day">
-                <h4 class="habbit__day">Day _</h4>
-              </div>
+                  <li class="habbit-list__item">
+                     <div class="dis-flex habbit__item-day">
+                        <h4 class="habbit__day">Day _</h4>
+                     </div>
 
-              <div class="habbit__item-desc">
-                <form class="habbit__form dis-flex" onsubmit="addDays(event)">
-                  <input
-                    name="comment"
-                    class="input_form"
-                    type="text"
-                    placeholder="Comment"
-                  />
-                  <img
-                    class="comment-icon"
-                    src="./images/comments.svg"
-                    alt="comment"
-                  />
-                  <button class="button-ready" type="submit">Ready</button>
-                </form>
-              </div>
-            </li>
-          </ul>
-        </main>
+                     <div class="habbit__item-desc">
+                        <form
+                           class="habbit__form dis-flex"
+                           onsubmit="addDays(event)"
+                        >
+                           <input
+                              name="comment"
+                              class="input_form"
+                              type="text"
+                              placeholder="Comment"
+                           />
+                           <img
+                              class="comment-icon"
+                              src="./images/comments.svg"
+                              alt="comment"
+                           />
+                           <button class="button-ready" type="submit">
+                              Ready
+                           </button>
+                        </form>
+                     </div>
+                  </li>
+               </ul>
+            </main>
+         </div>
       </div>
-    </div>
 
-    <script src="./scripts/app.js"></script>
-  </body>
+      <script src="./scripts/app.js"></script>
+   </body>
 </html>
