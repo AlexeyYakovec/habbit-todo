@@ -53,6 +53,30 @@ function togglePopup() {
    }
 }
 
+function validateForm(form, fields) {
+   const formData = new FormData(form);
+   res = {};
+   for (const field of fields) {
+      const fieldValue = data.get(field);
+      form[field].classList.remove("error");
+      if (!fieldValue) {
+         form[field].classList.add("error");
+      }
+      res[field] = fieldValue;
+   }
+   let isValid = true;
+   for (const field of fields) {
+      if (!res[field]) {
+         isValid = false;
+      }
+   }
+
+   if (!isValid) {
+      return;
+   }
+   return res;
+}
+
 // render
 function rerenderMenu(activeHabbit) {
    for (const habbit of habbits) {
@@ -159,6 +183,10 @@ function addDays(event) {
    saveData();
    console.log(habbits);
    rerender(globalActiveHabbitId);
+}
+
+function addHabbit(event) {
+   event.preventDefault();
 }
 
 // delete task
