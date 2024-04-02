@@ -116,20 +116,6 @@ function rerenderContent(activeHabbit) {
    page.content.nextDay.innerHTML = `Day ${activeHabbit.days.length + 1}`;
 }
 
-// rerender function
-function rerender(activeHabbitId) {
-   globalActiveHabbitId = activeHabbitId;
-   const activeHabbit = habbits.find((habbit) => {
-      return habbit.id === activeHabbitId;
-   });
-   if (!activeHabbit) {
-      return;
-   }
-   rerenderMenu(activeHabbit);
-   rerenderHead(activeHabbit);
-   rerenderContent(activeHabbit);
-}
-
 /* work with days */
 
 function addDays(event) {
@@ -169,6 +155,20 @@ function deleteDay(index) {
    });
    rerender(globalActiveHabbitId);
    saveData();
+}
+
+// rerender function
+function rerender(activeHabbitId) {
+   globalActiveHabbitId = activeHabbitId;
+   const activeHabbit = habbits.find((habbit) => {
+      return habbit.id === activeHabbitId;
+   });
+   if (!activeHabbit) {
+      return;
+   }
+   rerenderMenu(activeHabbit);
+   rerenderHead(activeHabbit);
+   rerenderContent(activeHabbit);
 }
 
 // init

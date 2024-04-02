@@ -1,39 +1,40 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/button.css);
 @import url(../vendor/global.css);
+@import url(../vendor/popup.css);
 
 @import url(../vendor/panel.css);
 @import url(../vendor/content.css);
 
 :root {
-  /* --accent-color: #cad5ff; */
-  --accent-color: #f3f6fd;
-  --menu-color: #fbfaff;
-  --title-color: #000000;
-  --task-color: #23235f;
-  --precent-color: #768396;
+   /* --accent-color: #cad5ff; */
+   --accent-color: #f3f6fd;
+   --menu-color: #fbfaff;
+   --title-color: #000000;
+   --task-color: #23235f;
+   --precent-color: #768396;
 
-  --progress-color: #232360;
+   --progress-color: #232360;
 
-  --btn-background: #edecfe;
-  --btn-color: #5051f9;
-  --btn-background-active: #5051f9;
-  --btn-background-default: #ffffff;
-  --btn-background-hover: #6a6afb;
+   --btn-background: #edecfe;
+   --btn-color: #5051f9;
+   --btn-background-active: #5051f9;
+   --btn-background-default: #ffffff;
+   --btn-background-hover: #6a6afb;
 
-  --progress-bar: #5051f9;
-  --progress-background: #e6e9ed;
+   --progress-bar: #5051f9;
+   --progress-background: #e6e9ed;
 
-  --gray: #94a3bd;
+   --gray: #94a3bd;
 }
 
 .dis-flex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
 .app {
-  display: flex;
-  gap: 50px;
+   display: flex;
+   gap: 50px;
 }
