@@ -23,7 +23,10 @@
             <img class="logo" src="./images/logo.svg" alt="logo hobbit app" />
             <nav class="menu">
                <ul class="menu__list">
-                  <button class="button plus menu__add">
+                  <button
+                     class="button plus popup__open"
+                     onclick="togglePopup()"
+                  >
                      <img src="./images/Add.svg" alt="make a habit" />
                   </button>
                </ul>
@@ -78,18 +81,29 @@
                </ul>
             </main>
          </div>
-         <div class="cover cover_hidden">
+
+         <!-- popup -->
+         <div class="cover" id="add-habbit-popup">
             <div class="popup">
                <h2>Новая привычка</h2>
                <div class="icon-label">иконка</div>
                <div class="icon-select">
-                  <button class="button menu__button icon icon-active">
+                  <button
+                     class="button menu__button icon icon-active"
+                     onclick="setIcon(this, 'sport')"
+                  >
                      <img src="./images/sport.svg" alt="sport" />
                   </button>
-                  <button class="button menu__button icon">
-                     <img src="./images/Water.svg" alt="drink" />
+                  <button
+                     class="button menu__button icon"
+                     onclick="setIcon(this, 'water')"
+                  >
+                     <img src="./images/water.svg" alt="drink" />
                   </button>
-                  <button class="button menu__button icon">
+                  <button
+                     class="button menu__button icon"
+                     onclick="setIcon(this, 'food')"
+                  >
                      <img src="./images/food.svg" alt="food" />
                   </button>
                </div>
@@ -101,6 +115,14 @@
                      class="popup-input"
                   />
                   <input
+                     type="text"
+                     name="icon"
+                     placeholder="иконка"
+                     class="popup-input"
+                     hidden
+                     value="sport"
+                  />
+                  <input
                      type="number"
                      name="target"
                      placeholder="цель"
@@ -108,7 +130,7 @@
                   />
                   <button type="submit" class="button-ready">Добавить</button>
                </form>
-               <button class="popup__close">
+               <button class="popup__close" onclick="togglePopup()">
                   <img src="./images/close.svg" alt="drink" />
                </button>
             </div>

@@ -16,9 +16,19 @@ const page = {
       daysContainer: document.getElementById("days"),
       nextDay: document.querySelector(".habbit__day"),
    },
+   popup: {
+      index: document.querySelector("#add-habbit-popup"),
+      iconField: document.querySelector('.popup__form input[name="icon"]'),
+   },
+   buttons: {
+      closePopup: document.querySelector(".popup__close"),
+      openPopup: document.querySelector(".popup__open"),
+   },
 };
 
-// utils
+console.log(page.popup.iconField);
+
+// util-
 
 // функция загрузки данных
 function loadData() {
@@ -32,6 +42,15 @@ function loadData() {
 // функция сохранения данных
 function saveData() {
    localStorage.setItem(HABBIT_KEY, JSON.stringify(habbits));
+}
+
+// popup
+function togglePopup() {
+   if (page.popup.index.classList.contains("cover_hidden")) {
+      page.popup.index.classList.remove("cover_hidden");
+   } else {
+      page.popup.index.classList.add("cover_hidden");
+   }
 }
 
 // render
@@ -117,7 +136,6 @@ function rerenderContent(activeHabbit) {
 }
 
 /* work with days */
-
 function addDays(event) {
    const form = event.target;
    event.preventDefault();
@@ -143,6 +161,7 @@ function addDays(event) {
    rerender(globalActiveHabbitId);
 }
 
+// delete task
 function deleteDay(index) {
    habbits = habbits.map((habbit) => {
       if (habbit.id === globalActiveHabbitId) {
@@ -155,6 +174,14 @@ function deleteDay(index) {
    });
    rerender(globalActiveHabbitId);
    saveData();
+}
+
+// working with habbits
+function setIcon(context, icon) {
+   page.popup.iconField.value = icon;
+   const activeIcon = document.querySelector(".icon.icon-active");
+   activeIcon.classList.remove("icon-active");
+   context.classList.add("icon-active");
 }
 
 // rerender function
@@ -175,4 +202,5 @@ function rerender(activeHabbitId) {
 (() => {
    loadData();
    rerender(habbits[0].id);
+   togglePopup();
 })();
