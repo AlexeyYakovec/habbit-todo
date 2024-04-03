@@ -26,8 +26,6 @@ const page = {
    },
 };
 
-console.log(page.popup.iconField);
-
 // util-
 
 // функция загрузки данных
@@ -53,11 +51,19 @@ function togglePopup() {
    }
 }
 
-function validateForm(form, fields) {
-   const formData = new FormData(form);
-   res = {};
+//form
+
+function resetForm(form, fields) {
    for (const field of fields) {
-      const fieldValue = data.get(field);
+      form[field].value = "";
+   }
+}
+
+function validateAndGetForm(form, fields) {
+   const formData = new FormData(form);
+   const res = {};
+   for (const field of fields) {
+      const fieldValue = formData.get(field);
       form[field].classList.remove("error");
       if (!fieldValue) {
          form[field].classList.add("error");
@@ -91,7 +97,6 @@ function rerenderMenu(activeHabbit) {
          button.classList.add("button", "menu__button");
          button.innerHTML = `<img src="./images/${habbit.icon}.svg" alt=$${habbit.name} />`;
          button.addEventListener("click", () => {
-            console.log(habbit.id);
             rerender(habbit.id);
          });
          if (activeHabbit.id === habbit.id) {
@@ -161,32 +166,47 @@ function rerenderContent(activeHabbit) {
 
 /* work with days */
 function addDays(event) {
-   const form = event.target;
    event.preventDefault();
-   const data = new FormData(form);
-   const comment = data.get("comment");
-   form["comment"].classList.remove("error");
-   if (!comment) {
-      form["comment"].classList.add("error");
+   const data = validateAndGetForm(event.target, ["comment"]);
+   if (!data) {
+      return;
    }
-   console.log(globalActiveHabbitId);
    habbits = habbits.map((habbit) => {
       if (habbit.id === globalActiveHabbitId) {
          return {
             ...habbit,
-            days: habbit.days.concat([{ comment }]),
+            days: habbit.days.concat([{ comment: data.comment }]),
          };
       }
       return habbit;
    });
-   form["comment"].value = "";
-   saveData();
-   console.log(habbits);
+   resetForm(event.target, ["comment"]);
    rerender(globalActiveHabbitId);
+   saveData();
 }
 
 function addHabbit(event) {
    event.preventDefault();
+   const data = validateAndGetForm(event.target, ["name", "icon", "target"]);
+   console.log("addHabbit:", data);
+   if (!data) {
+      return;
+   }
+   const maxId = habbits.reduce(
+      (acc, habbit) => (acc > habbit.id ? acc : habbit.id),
+      0
+   );
+   habbits.push({
+      id: maxId + 1,
+      name: data.name,
+      target: data.target,
+      icon: data.icon,
+      days: [],
+   });
+   resetForm(event.target, ["name", "icon", "target"]);
+   togglePopup();
+   saveData();
+   rerender(maxId + 1);
 }
 
 // delete task
